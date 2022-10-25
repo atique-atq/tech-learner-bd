@@ -6,7 +6,7 @@ import './Home.css'
 
 const Home = () => {
     return (
-        <div>
+        <div className='carousel-container'>
             <Carousel className='fw-bolder'>
                 <Carousel.Item >
                     <img
@@ -15,7 +15,7 @@ const Home = () => {
                         alt="First slide"
                     />
                     <Carousel.Caption className='carousel-caption'>
-                        <small className='text-white ps-5 pe-5'>Learn anything from anywhere. Digital Learning is a fun by Tech Learning BD. All the schools ans colleges can run this platform for all students.</small>
+                        <small className='text-white m-5 p-5 fw-lighter'>Learn anything from anywhere. Digital Learning is a fun by Tech Learning BD. All the schools ans colleges can run this platform for all students.</small>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -25,7 +25,7 @@ const Home = () => {
                         alt="Second slide"
                     />
                     <Carousel.Caption>
-                        <small className='text-secondary ps-5 pe-5'>Learn from the genius. Learning is a fun here. All the schools ans colleges can run this platform for all students. Just pay a visit to our courses</small>
+                        <small className='text-secondary m-5 p-5 fw-lighter'>Learn from the genius. Learning is a fun here. All the schools ans colleges can run this platform for all students. Just pay a visit to our courses</small>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
