@@ -7,21 +7,9 @@ const Main = () => {
     return (
         <div>
             <Header></Header>
-            <Container>
-                <Row>
-                    <Col lg="2" className='d-none d-lg-block'>
-                        {/* <LeftSideNav></LeftSideNav> */}
-                    </Col>
-                    <Col lg="7">
-                        <Outlet></Outlet>
-                    </Col>
-                    <Col lg="3">
-                        {/* <RightSideNav></RightSideNav> */}
-                    </Col>
-                </Row>
-            </Container>
+            <Outlet></Outlet>
             {/* <Footer></Footer> */}
-            
+
         </div>
     );
 };

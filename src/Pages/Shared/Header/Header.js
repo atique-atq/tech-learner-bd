@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import brand from '../../../assets/brands/brand.jpg'
+import './Header.css';
 
 
 
@@ -25,37 +26,36 @@ const Header = () => {
                     </Nav>
 
                     {/* <Nav>
-                        <>
-                            {
-                                user?.uid ?
-                                    <>
-                                        <span>{user?.displayName}</span>
-                                        <Button variant="light" onClick={handleLogOut}>Log out</Button>
-                                    </>
-                                    :
-                                    <>
-                                        <Link to='/login'>Login</Link>
-                                        <Link to='/register'>Register</Link>
-                                    </>
-                            }
+        <>
+            {
+                user?.uid ?
+                    <>
+                        <span>{user?.displayName}</span>
+                        <Button variant="light" onClick={handleLogOut}>Log out</Button>
+                    </>
+                    :
+                    <>
+                        <Link to='/login'>Login</Link>
+                        <Link to='/register'>Register</Link>
+                    </>
+            }
 
 
-                        </>
-                        <Link to="/profile">
-                            {user?.photoURL ?
-                                <Image
-                                    style={{ height: '30px' }}
-                                    roundedCircle
-                                    src={user?.photoURL}>
-                                </Image>
-                                : <FaUser></FaUser>
-                            }
-                        </Link>
-                    </Nav> */}
+        </>
+        <Link to="/profile">
+            {user?.photoURL ?
+                <Image
+                    style={{ height: '30px' }}
+                    roundedCircle
+                    src={user?.photoURL}>
+                </Image>
+                : <FaUser></FaUser>
+            }
+        </Link>
+    </Nav> */}
                 </Navbar.Collapse>
             </Container>
         </Navbar >
-
     );
 };
 
