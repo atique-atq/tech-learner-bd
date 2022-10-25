@@ -1,28 +1,21 @@
 import React from 'react';
+import { FaFacebookF, FaTwitter, FaYoutube, FaTiktok } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer class="bg-dark p-3 text-center text-white">
+        <footer class="bg-dark p-3 text-center text-warning">
             <div class="lh-1">
-                <h5>Tech Learning BD</h5>
+                <h6>Tech Learning BD</h6>
             </div>
 
-            <div class="d-flex justify-content-center text-white">
-
-                <a class="fs-4 text-white" href="https://www.facebook.com/">
-                    <span><i class="fa-brands fa-facebook"></i></span></a>
-
-                <a class="fs-4 ps-5 text-white" target="_blank" href="https://twitter.com/">
-                    <span><i class="fa-brands fa-twitter"></i></span></a>
-
-                <a class="fs-4 ps-5 text-white" target="_blank" href="https://www.youtube.com/">
-                    <span><i class="fa-brands fa-youtube"></i></span></a>
-
-                <a class="fs-4 ps-5 text-white" target="_blank" href="https://www.tiktok.com/en/">
-                    <span><i class="fa-brands fa-tiktok"></i></span></a>
-
+            <div class="d-flex justify-content-center text-white ms-5 me-5 ps-5 pe-5">
+                <Link className='me-3'> <FaFacebookF></FaFacebookF> </Link>
+                <Link className='me-3'> <FaTwitter></FaTwitter> </Link>
+                <Link className='me-3'> <FaYoutube></FaYoutube> </Link>
+                <Link className='me-3'> <FaTiktok></FaTiktok> </Link>
             </div>
-            <div class="mt-4 mb-0 pt-3 fs-6 text-info">©ATQ Solution Ltd 2023. All rights reserved.</div>
+            <div class="mt-1 mb-0 pt-3 fs-6 text-info">© All rights reserved.</div>
         </footer>
     );
 };
