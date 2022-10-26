@@ -1,4 +1,4 @@
-.login-cotainer{
+.register-cotainer{
     margin: 1% auto;
     padding: 5%;
     width: 50%;
@@ -8,7 +8,7 @@
 
 /* tablet and mobile responsive */
 @media screen and (max-width:700px) {
-    .login-cotainer{
+    .register-cotainer{
         width: 70%;
     }
 }

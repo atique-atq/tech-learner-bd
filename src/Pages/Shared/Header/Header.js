@@ -48,19 +48,7 @@ const Header = () => {
                                         <Link className='text-white text-decoration-none p-2 ms-3  fw-semibold nav-tex' to='/register'>Register</Link>
                                     </>
                             }
-
-
                         </>
-                        {/* <Link to="/profile">
-                {user?.photoURL ?
-                    <Image
-                        style={{ height: '30px' }}
-                        roundedCircle
-                        src={user?.photoURL}>
-                    </Image>
-                    : <FaUser></FaUser>
-                }
-            </Link> */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
