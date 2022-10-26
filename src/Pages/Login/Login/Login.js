@@ -72,7 +72,7 @@ const Login = () => {
 
             <hr />
             <div className='d-flex flex-column align-items-center justify-content-center'>
-                <Button onClick={handleGoogleSignIn} variant="outline-primary" className='px-5'> <FaGoogle></FaGoogle> Login with Google</Button>
+                <Button onClick={handleGoogleSignIn} className='px-5'> <FaGoogle></FaGoogle> Login with Google</Button>
                 <br />
                 <Button variant="outline-dark" className='px-5'> <FaGithub></FaGithub> Login with Github</Button>
             </div>

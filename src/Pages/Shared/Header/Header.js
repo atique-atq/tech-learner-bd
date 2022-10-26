@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import brand from '../../../assets/brands/brand.jpg'
@@ -9,6 +9,7 @@ import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [theme, setTheme] = useState(true);
     console.log(user?.photoURL);
 
     const handleLogOut = () => {
@@ -17,8 +18,13 @@ const Header = () => {
             .catch(error => console.error(error))
     }
 
+    const handleTheme = () => {
+        let value = theme;
+        setTheme(!value);
+    }
+
     return (
-        <Navbar className='navbar-container' collapseOnSelect expand="lg" bg="primary" variant="dark">
+        <Navbar className='navbar-container' collapseOnSelect expand="lg" bg={`${theme ? `primary` : `secondary`}`} variant="dark">
             <Container>
                 <Navbar.Brand>
                     <Link className='text-decoration-none text-warning fs-4 fw-bolder' to='/'>
@@ -40,13 +46,12 @@ const Header = () => {
                             {
                                 user?.uid ?
                                     <div>
-                                        <span className='pe-3 text-white fst-italic'>{user?.displayName}</span>
-                                        <Button variant="light" onClick={handleLogOut}>Log out</Button>
+                                        <Button className='m-3' variant="outline-dark" onClick={handleLogOut}>Log out</Button>
                                     </div>
                                     :
-                                    <div>
-                                        <Link className='text-white text-decoration-none p-2 ms-3  fw-semibold nav-tex' to='/login'>Login</Link>
-                                        <Link className='text-white text-decoration-none p-2 ms-2  fw-semibold nav-tex' to='/register'>Register</Link>
+                                    <div className='m-4'>
+                                        <Link className='text-white text-decoration-none p-1 fw-semibold nav-tex' to='/login'>Login</Link>
+                                        <Link className='text-white text-decoration-none p-1 fw-semibold nav-tex' to='/register'>Register</Link>
                                     </div>
                             }
                         </>
@@ -57,13 +62,22 @@ const Header = () => {
                                     <Image
                                         title={user?.displayName}
                                         style={{ height: '30px' }}
-                                        className='ms-4'
+                                        className='my-3 mx-2'
                                         roundedCircle
                                         src={user?.photoURL}>
                                     </Image>
-                                    : <p className='text-white'> <FaUser></FaUser></p>
+                                    : <p className='text-white my-4 mx-2 p'> <FaUser></FaUser></p>
                             }
                         </Link>
+
+                        <div>
+                            <Button className='m-3' variant="light" onClick={handleTheme}>
+                                Theme
+                                {theme ?
+                                    <span className='bg-secondary text-secondary m-2'> dark</span> :
+                                    <span className='bg-primary text-primary m-2'> primary</span>}
+                            </Button>
+                        </div>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
