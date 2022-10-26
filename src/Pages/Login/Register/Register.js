@@ -18,7 +18,19 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        // console.log(name, photoURL, email, password);
+        const confirm = form.confirm.value;
+
+        if (password.length < 6) {
+            setError('Password should be 6 characters or more.');
+            toast.error('Password should be 6 characters or more.');
+            return;
+        }
+
+        if (password !== confirm) {
+            toast.error('Your Password did not match');
+            setError('Your Password did not match');
+            return;
+        }
 
         createUser(email, password)
             .then(result => {
@@ -27,8 +39,6 @@ const Register = () => {
                 setError('');
                 form.reset();
                 handleUpdateUserProfile(name, photoURL);
-                handleEmailVerification();
-                toast.success('Please verify your email address.')
             })
             .catch(e => {
                 console.error(e);
@@ -43,12 +53,6 @@ const Register = () => {
         }
 
         updateUserProfile(profile)
-            .then(() => { })
-            .catch(error => console.error(error));
-    }
-
-    const handleEmailVerification = () => {
-        verifyEmail()
             .then(() => { })
             .catch(error => console.error(error));
     }
@@ -79,6 +83,12 @@ const Register = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control name="password" type="password" placeholder="Password" required />
                 </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Confirm Password</Form.Label>
+                    <Form.Control name="confirm" type="password" placeholder="Password Password" required />
+                </Form.Group>
+
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check
                         type="checkbox"

@@ -46,7 +46,7 @@ const Header = () => {
                                     :
                                     <div>
                                         <Link className='text-white text-decoration-none p-2 ms-3  fw-semibold nav-tex' to='/login'>Login</Link>
-                                        <Link className='text-white text-decoration-none p-2 ms-3  fw-semibold nav-tex' to='/register'>Register</Link>
+                                        <Link className='text-white text-decoration-none p-2 ms-2  fw-semibold nav-tex' to='/register'>Register</Link>
                                     </div>
                             }
                         </>
@@ -56,7 +56,7 @@ const Header = () => {
                                 user?.photoURL ?
                                     <Image
                                         style={{ height: '30px' }}
-                                        className='ps-3'
+                                        className='ms-4'
                                         roundedCircle
                                         src={user?.photoURL}>
                                     </Image>
