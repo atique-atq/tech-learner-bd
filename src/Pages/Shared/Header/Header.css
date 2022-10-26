@@ -1,3 +1,6 @@
+.navbar-container{
+    box-shadow: 2px 15px 25px #98cdfca8;
+}
 .nav-tex:hover{
     background-color: rgb(250, 199, 102);
     border-radius: 3px;
