@@ -1,8 +1,11 @@
 import React, { useContext, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import './Login.css';
+import { Link } from 'react-router-dom';
+import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const Login = () => {
     const [error, setError] = useState('');
@@ -31,7 +34,7 @@ const Login = () => {
     }
 
     return (
-        <div className='login-cotainer my-3'>
+        <div className='login-cotainer mt-3 mb-1'>
             <h4 className='text-success fw-bold text-center'>Please log in:</h4>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -52,7 +55,13 @@ const Login = () => {
                     {error}
                 </Form.Text>
             </Form>
-            <p>Don't Have an Accout? Register here</p>
+            <p>Don't Have an Accout? <Link to='/register'> Register here</Link></p>
+            <hr />
+            <div className='d-flex flex-column align-items-center justify-content-center'>
+                <Button variant="outline-primary" className='px-5'> <FaGoogle></FaGoogle> Login with Google</Button>
+                <br />
+                <Button variant="outline-dark" className='px-5'> <FaGithub></FaGithub> Login with Github</Button>
+            </div>
         </div >
     );
 };
