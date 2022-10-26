@@ -46,7 +46,7 @@ const Header = () => {
                             {
                                 user?.uid ?
                                     <div>
-                                        <Button className='m-3' variant="outline-dark" onClick={handleLogOut}>Log out</Button>
+                                        <Button className='m-4' variant="outline-dark" onClick={handleLogOut}>Log out</Button>
                                     </div>
                                     :
                                     <div className='m-4'>
@@ -62,16 +62,16 @@ const Header = () => {
                                     <Image
                                         title={user?.displayName}
                                         style={{ height: '30px' }}
-                                        className='my-3 mx-2'
+                                        className='my-4 mx-2 p-0'
                                         roundedCircle
                                         src={user?.photoURL}>
                                     </Image>
-                                    : <p className='text-white my-4 mx-2 p'> <FaUser></FaUser></p>
+                                    : <p className='text-white my-4 mx-2 '> <FaUser></FaUser></p>
                             }
                         </Link>
 
                         <div>
-                            <Button className='m-3' variant="light" onClick={handleTheme}>
+                            <Button className='m-4' variant="light" onClick={handleTheme}>
                                 Theme
                                 {theme ?
                                     <span className='bg-secondary text-secondary m-2'> dark</span> :
