@@ -6,6 +6,8 @@
     margin: 2% auto;
     padding: 15px 0px;
     width: 75%;
+    background-color: white;
+    border-radius: 10px;
 }
 
 .category-button:hover{

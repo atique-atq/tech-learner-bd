@@ -12,13 +12,12 @@ const Courses = () => {
         < Row className='p-0 m-0'>
             <Col lg="3" className='left-side-container text-center p-md-2 p-sm-0'>
                 {
-                    courses.map(category => <Button key={category._id}
-                        variant="light"
-                        className='category-button d-block'>
-                        <Link to={`/course/${category.course_id}`} className="text-decoration-none">
-                            {category.title}
-                        </Link>
-                    </Button>
+                    courses.map(category => <Link key={category._id}
+                        className='category-button d-block text-decoration-none'
+                        to={`/course/${category.course_id}`}>
+                        {category.title}
+
+                    </Link>
                     )
                 }
             </Col>

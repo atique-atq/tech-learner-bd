@@ -1,5 +1,6 @@
 .card-height{
     height: '15em';
+    box-shadow: 5px 5px 5px #9fa1a3a8;
 }
 
 /*mobile responsive */

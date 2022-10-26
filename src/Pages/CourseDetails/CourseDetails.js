@@ -6,7 +6,7 @@ const CourseDetails = () => {
     let courseDetails = useLoaderData();
 
     return (
-        <div>
+        <div className='courseDetails'>
             <h1>This is our courseDetails page {courseDetails.title}</h1>
 
         </div>
