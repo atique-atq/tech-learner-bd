@@ -9,13 +9,13 @@ const Footer = () => {
                 <h6>Tech Learning BD</h6>
             </div>
 
-            <div class="d-flex justify-content-center text-white ms-5 me-5 ps-5 pe-5">
+            <div className="d-flex justify-content-center text-white ms-5 me-5 ps-5 pe-5">
                 <Link className='me-3'> <FaFacebookF></FaFacebookF> </Link>
                 <Link className='me-3'> <FaTwitter></FaTwitter> </Link>
                 <Link className='me-3'> <FaYoutube></FaYoutube> </Link>
                 <Link className='me-3'> <FaTiktok></FaTiktok> </Link>
             </div>
-            <div class="mt-1 mb-0 pt-3 fs-6 text-info">© All rights reserved.</div>
+            <div className="mt-1 mb-0 pt-3 fs-6 text-info">© All rights reserved.</div>
         </footer>
     );
 };
