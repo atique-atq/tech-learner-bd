@@ -1,6 +1,10 @@
-.card-details{
-    /* height: 150px; */
-}
 .card-height{
-    height: 200px;
+    height: '15em';
+}
+
+/*mobile responsive */
+@media screen and (max-width:900px) {
+    .card-height{
+        height: '33em';
+    }
 }
