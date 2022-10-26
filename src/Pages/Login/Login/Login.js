@@ -1,15 +1,28 @@
 import React, { useContext, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import './Login.css';
 import { Link } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const [error, setError] = useState('');
     const { signIn, setLoading } = useContext(AuthContext);
+
+    const { providerLogin } = useContext(AuthContext);
+
+    const googleProvider = new GoogleAuthProvider()
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+    }
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -56,9 +69,10 @@ const Login = () => {
                 </Form.Text>
             </Form>
             <p>Don't Have an Accout? <Link to='/register'> Register here</Link></p>
+
             <hr />
             <div className='d-flex flex-column align-items-center justify-content-center'>
-                <Button variant="outline-primary" className='px-5'> <FaGoogle></FaGoogle> Login with Google</Button>
+                <Button onClick={handleGoogleSignIn} variant="outline-primary" className='px-5'> <FaGoogle></FaGoogle> Login with Google</Button>
                 <br />
                 <Button variant="outline-dark" className='px-5'> <FaGithub></FaGithub> Login with Github</Button>
             </div>

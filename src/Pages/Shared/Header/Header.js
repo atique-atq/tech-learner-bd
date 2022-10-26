@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import brand from '../../../assets/brands/brand.jpg'
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import './Header.css';
-
-
+import { Image } from 'react-bootstrap';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+    console.log(user?.photoURL);
 
     const handleLogOut = () => {
         logOut()
@@ -38,17 +39,30 @@ const Header = () => {
                         <>
                             {
                                 user?.uid ?
-                                    <>
-                                        <span>{user?.displayName}</span>
+                                    <div>
+                                        <span className='pe-3 text-white fst-italic'>{user?.displayName}</span>
                                         <Button variant="light" onClick={handleLogOut}>Log out</Button>
-                                    </>
+                                    </div>
                                     :
-                                    <>
+                                    <div>
                                         <Link className='text-white text-decoration-none p-2 ms-3  fw-semibold nav-tex' to='/login'>Login</Link>
                                         <Link className='text-white text-decoration-none p-2 ms-3  fw-semibold nav-tex' to='/register'>Register</Link>
-                                    </>
+                                    </div>
                             }
                         </>
+
+                        <Link to="/profile">
+                            {
+                                user?.photoURL ?
+                                    <Image
+                                        style={{ height: '30px' }}
+                                        className='ps-3'
+                                        roundedCircle
+                                        src={user?.photoURL}>
+                                    </Image>
+                                    : <p className='text-white'> <FaUser></FaUser></p>
+                            }
+                        </Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
