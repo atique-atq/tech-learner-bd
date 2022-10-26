@@ -24,7 +24,7 @@ const CourseDetails = () => {
                     </Card.Text>
                     <div className='d-flex justify-content-around align-items-center'>
                         <p>Rating: <span className='text-warning'> {ratings} <FaStar></FaStar> </span> </p>
-                        <p>Author Name: <strong> {author}</strong></p>
+                        <p>Author : <strong> {author}</strong></p>
                         <img src={author_img_url} class="w-25 rounded-circle" alt="author" />
                     </div>
                     <Link>
