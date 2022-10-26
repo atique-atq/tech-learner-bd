@@ -1,3 +1,26 @@
-.courseDetails{
-    background-image: radial-gradient(#27aefdc4, #bce5f9);
+.card-area{
+    width: 50%;
+    margin: 4% auto;
+    box-shadow: 10px 10px 15px #9fa1a3a8; 
+    border-style: none;
+    padding: 0;
+}
+
+.card-img{
+    width: 10%;
+    padding-top: 1%;
+    margin: 0% auto;
+}
+
+/* tablet responsive */
+@media screen and (max-width:800px) {
+    .card-area{
+        width: 60%;
+    }
+}
+/* mobile responsive */
+@media screen and (max-width:600px) {
+    .card-area{
+        width: 80%;
+    }
 }
