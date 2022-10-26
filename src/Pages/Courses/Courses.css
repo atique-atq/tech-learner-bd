@@ -1,0 +1,13 @@
+.left-side-container{
+    background-color: #61ACEF;
+}
+
+.category-button{
+    margin: 2% auto;
+    padding: 15px 1px;
+    width: 80%;
+}
+
+.category-button:hover{
+    background-color: tomato;
+}
