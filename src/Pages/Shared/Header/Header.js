@@ -1,12 +1,21 @@
-import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import brand from '../../../assets/brands/brand.jpg'
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import './Header.css';
 
 
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
     return (
         <Navbar className='navbar-container' collapseOnSelect expand="lg" bg="primary" variant="dark">
             <Container>
@@ -25,24 +34,24 @@ const Header = () => {
                         <Link className='text-white text-decoration-none p-2 ms-3 fw-semibold nav-tex' to='/faq'>FAQ</Link>
                     </Nav>
 
-                    {/* <Nav>
-            <>
-                {
-                    user?.uid ?
+                    <Nav>
                         <>
-                            <span>{user?.displayName}</span>
-                            <Button variant="light" onClick={handleLogOut}>Log out</Button>
-                        </>
-                        :
-                        <>
-                            <Link to='/login'>Login</Link>
-                            <Link to='/register'>Register</Link>
-                        </>
-                }
+                            {
+                                user?.uid ?
+                                    <>
+                                        <span>{user?.displayName}</span>
+                                        <Button variant="light" onClick={handleLogOut}>Log out</Button>
+                                    </>
+                                    :
+                                    <>
+                                        <Link className='text-white text-decoration-none p-2 ms-3  fw-semibold nav-tex' to='/login'>Login</Link>
+                                        <Link className='text-white text-decoration-none p-2 ms-3  fw-semibold nav-tex' to='/register'>Register</Link>
+                                    </>
+                            }
 
 
-            </>
-            <Link to="/profile">
+                        </>
+                        {/* <Link to="/profile">
                 {user?.photoURL ?
                     <Image
                         style={{ height: '30px' }}
@@ -51,8 +60,8 @@ const Header = () => {
                     </Image>
                     : <FaUser></FaUser>
                 }
-            </Link>
-        </Nav> */}
+            </Link> */}
+                    </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar >
