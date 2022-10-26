@@ -1,29 +1,37 @@
 import Button from 'react-bootstrap/Button';
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
-import LeftSideNav from '../Shared/LeftSideNav/LeftSideNav';
 import './Courses.css';
+import Course from '../Course/Course';
 
 const Courses = () => {
     const courses = useLoaderData();
 
     return (
-        <div >
-            < Row >
-                <Col md="3" className='left-side-container text-center p-md-2 p-sm-5 ms-0'>
+
+        < Row className='p-0 m-0'>
+            <Col lg="3" className='left-side-container text-center p-md-2 p-sm-0'>
+                {
+                    courses.map(category => <Button
+                        key={category.course_id}
+                        variant="light"
+                        className='category-button d-block'>
+                        {category.title}</Button>
+                    )
+                }
+            </Col>
+            <Col lg="9">
+                <div className='row px-3'>
                     {
-                        courses.map(category => <Button
-                            key={category.id}
-                            variant="light"
-                            className='category-button d-block'>
-                            {category.title}</Button>
-                        )
+                        courses.map(course => <Course
+                            key={course.course_id}
+                            courseDetails={course}
+                        ></Course>)
                     }
-                </Col>
-                <Col md="9">2 of 2</Col>
-            </Row >
-        </div >
+                </div>
+            </Col>
+        </Row >
     );
 };
 
