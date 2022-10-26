@@ -1,0 +1,19 @@
+.blog-page{
+    background-image: radial-gradient(#27aefdc4, #bce5f9);
+    margin: 0;
+    padding: 5%;
+    height: 600px;
+}
+.blogs-container{
+        /* background-color: #F8F9FA; */
+    margin: 0% 5%;
+    /* box-shadow: 5px 5px 5px #9fa1a3a8; */
+    height: 100%;
+}
+
+/* tablet and mobile responsive */
+@media screen and (max-width:900px) {
+    .blogs-container{
+        margin: 3% 10%;
+    }
+}

@@ -10,7 +10,7 @@ const Home = () => {
             <Carousel className='fw-bolder'>
                 <Carousel.Item >
                     <img
-                        className="d-block w-100 image-brightness"
+                        className="d-block image-option"
                         src={banner2}
                         alt="First slide"
                     />
@@ -20,7 +20,7 @@ const Home = () => {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100"
+                        className="d-block image-option"
                         src={banner1}
                         alt="Second slide"
                     />

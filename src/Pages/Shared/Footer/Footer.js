@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer class="bg-dark p-3 text-center text-warning">
-            <div class="lh-1">
+        <footer fixed="bottom" className="bg-dark p-3 text-center text-warning">
+            <div className="lh-1">
                 <h6>Tech Learning BD</h6>
             </div>
 
