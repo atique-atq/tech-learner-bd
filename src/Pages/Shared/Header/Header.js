@@ -55,6 +55,7 @@ const Header = () => {
                             {
                                 user?.photoURL ?
                                     <Image
+                                        title={user?.displayName}
                                         style={{ height: '30px' }}
                                         className='ms-4'
                                         roundedCircle
