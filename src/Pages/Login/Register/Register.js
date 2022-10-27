@@ -39,6 +39,9 @@ const Register = () => {
                 setError('');
                 form.reset();
                 handleUpdateUserProfile(name, photoURL);
+                toast.success('Registraion Successful', {
+                    position: "top-right"
+                });
             })
             .catch(e => {
                 console.error(e);

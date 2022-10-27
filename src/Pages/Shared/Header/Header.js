@@ -66,7 +66,9 @@ const Header = () => {
                                         roundedCircle
                                         src={user?.photoURL}>
                                     </Image>
-                                    : <p className='text-white my-4 mx-2 '> <FaUser></FaUser></p>
+                                    : <p className='text-white my-4 mx-2'
+                                        title={user?.displayName}
+                                    > <FaUser></FaUser></p>
                             }
                         </Link>
 
