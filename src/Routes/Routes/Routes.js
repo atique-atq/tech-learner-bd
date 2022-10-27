@@ -26,18 +26,18 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses',
-                loader: () => fetch('http://localhost:5000/courses'),
+                loader: () => fetch('https://tech-learning-bd-server.vercel.app/courses'),
                 element: <Courses></Courses>
             },
             {
                 path: '/course/:courseId',
-                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.courseId}`),
+                loader: ({ params }) => fetch(`https://tech-learning-bd-server.vercel.app/course/${params.courseId}`),
                 element: <CourseDetails></CourseDetails>
             },
             {
                 path: '/checkout/:courseId',
                 element: <PrivateRoute> <Checkout></Checkout> </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.courseId}`)
+                loader: ({ params }) => fetch(`https://tech-learning-bd-server.vercel.app/course/${params.courseId}`)
 
             },
             {
