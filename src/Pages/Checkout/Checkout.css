@@ -1,0 +1,18 @@
+.checkout-page{
+    background-image: radial-gradient(#27aefdc4, #bce5f9);
+    margin: 0;
+    padding: 5%;
+    height: 600px;
+}
+.checkout-container{
+    background-color: white;
+    margin: 0% 5%;
+    height: 100%;
+}
+
+/* tablet and mobile responsive */
+@media screen and (max-width:900px) {
+    .checkout-container{
+        margin: 3% 10%;
+    }
+}

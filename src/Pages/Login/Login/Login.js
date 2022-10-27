@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
 import { FaGoogle, FaGithub } from "react-icons/fa";

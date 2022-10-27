@@ -7,6 +7,8 @@ import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login/Login";
 import Register from "../../Pages/Login/Register/Register";
 import Nopagefound from "../../Pages/Shared/Nopagefound/Nopagefound.js";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Checkout from "../../Pages/Checkout/Checkout";
 
 export const routes = createBrowserRouter([
     {
@@ -30,6 +32,12 @@ export const routes = createBrowserRouter([
                 path: '/course/:courseId',
                 loader: ({ params }) => fetch(`http://localhost:5000/course/${params.courseId}`),
                 element: <CourseDetails></CourseDetails>
+            },
+            {
+                path: '/checkout/:courseId',
+                element: <PrivateRoute> <Checkout></Checkout> </PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.courseId}`)
+
             },
             {
                 path: '/login',

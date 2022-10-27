@@ -27,7 +27,7 @@ const CourseDetails = () => {
                         <p>Author : <strong> {author}</strong></p>
                         <img src={author_img_url} class="w-25 rounded-circle" alt="author" />
                     </div>
-                    <Link>
+                    <Link to={`/checkout/${course_id}`}>
                         <Button variant="primary">Get Premium Access</Button>
                     </Link>
                 </Card.Body>
