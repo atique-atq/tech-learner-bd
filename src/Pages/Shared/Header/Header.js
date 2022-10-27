@@ -71,7 +71,7 @@ const Header = () => {
                         </Link>
 
                         <div>
-                            <Button className='m-3' variant="light" onClick={handleTheme}>
+                            <Button className='mt-4' variant="light" onClick={handleTheme}>
                                 Theme
                                 {theme ?
                                     <span className='bg-secondary text-secondary m-2'> one</span> :

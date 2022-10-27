@@ -1,33 +1,59 @@
-import React, { useContext, useState } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import React from 'react';
+import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
-import { Link, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { GoogleAuthProvider } from 'firebase/auth';
+import { useContext } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 
 const Login = () => {
+
     const [error, setError] = useState('');
-    const { signIn, setLoading } = useContext(AuthContext);
+
+    const { googleSignIn, githubSignIn, signIn } = useContext(AuthContext);
+
     const navigate = useNavigate();
-    const from = '/courses';
+    const location = useLocation();
 
-    const { providerLogin } = useContext(AuthContext);
+    const from = location.state?.from?.pathname || '/';
 
-    const googleProvider = new GoogleAuthProvider()
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleGoogleSignIn = () => {
-        providerLogin(googleProvider)
+        googleSignIn(googleProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true });
+                toast.success('Login Successful', {
+                    position: "top-right"
+                });
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error);
+            })
     }
 
-    const handleSubmit = event => {
+    const handleGithubSignIn = () => {
+        githubSignIn(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
+                toast.success('Login Successful', {
+                    position: "top-right"
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
+
+    const handleLogin = (event) => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -36,29 +62,27 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log('....', user);
+                console.log(user);
                 form.reset();
                 setError('');
-                if (user.uid) {
-                    navigate(from, { replace: true });
-                }
+                navigate(from, { replace: true });
+                toast.success('Login Successful', {
+                    position: "top-right"
+                });
             })
             .catch(error => {
-                console.error(error)
+                console.log(error);
                 setError(error.message);
-            })
-            .finally(() => {
-                setLoading(false);
-                toast.success('succesfully logged in')
-
-                // console.log(user);
+                form.reset();
             })
     }
+
+
 
     return (
         <div className='login-cotainer mt-3 mb-1'>
             <h4 className='text-success fw-bold text-center'>Please log in:</h4>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control name="email" type="email" placeholder="Enter email" required />
@@ -83,7 +107,7 @@ const Login = () => {
             <div className='d-flex flex-column align-items-center justify-content-center'>
                 <Button onClick={handleGoogleSignIn} className='px-5'> <FaGoogle></FaGoogle> Login with Google</Button>
                 <br />
-                <Button variant="outline-dark" className='px-5'> <FaGithub></FaGithub> Login with Github</Button>
+                <Button onClick={handleGithubSignIn} variant="outline-dark" className='px-5'> <FaGithub></FaGithub> Login with Github</Button>
             </div>
         </div >
     );

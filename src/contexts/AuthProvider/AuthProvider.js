@@ -1,38 +1,32 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import React from 'react';
+import { createContext } from 'react';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile, signOut } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
 
+
 const AuthProvider = ({ children }) => {
+
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log('inside auth state change', currentUser);
+    const googleSignIn = (provider) => {
+        setLoading(true);
+        return signInWithPopup(auth, provider);
+    }
 
-            if (currentUser === null || currentUser.emailVerified) {
-                setUser(currentUser);
-            }
-            setLoading(false);
-        });
-
-        return () => {
-            unsubscribe();
-        }
-
-    }, [])
-
-    const providerLogin = (provider) => {
+    const githubSignIn = (provider) => {
         setLoading(true);
         return signInWithPopup(auth, provider);
     }
 
     const createUser = (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password)
+        return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const signIn = (email, password) => {
@@ -49,23 +43,34 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            console.log('Inside Auth State Change:', currentUser);
+            setUser(currentUser);
+            setLoading(false);
+
+        });
+
+        return () => {
+            unsubscribe();
+        }
+
+    }, [])
+
     const authInfo = {
         user,
-        loading,
-        setLoading,
-        providerLogin,
+        googleSignIn,
         logOut,
-        updateUserProfile,
+        githubSignIn,
         createUser,
-        signIn
+        signIn,
+        updateUserProfile
     };
 
     return (
-        <div>
-            <AuthContext.Provider value={authInfo}>
-                {children}
-            </AuthContext.Provider>
-        </div>
+        <AuthContext.Provider value={authInfo}>
+            {children}
+        </AuthContext.Provider>
     );
 };
 
