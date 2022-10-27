@@ -71,11 +71,11 @@ const Header = () => {
                         </Link>
 
                         <div>
-                            <Button className='m-4' variant="light" onClick={handleTheme}>
+                            <Button className='m-3' variant="light" onClick={handleTheme}>
                                 Theme
                                 {theme ?
-                                    <span className='bg-secondary text-secondary m-2'> dark</span> :
-                                    <span className='bg-primary text-primary m-2'> primary</span>}
+                                    <span className='bg-secondary text-secondary m-2'> one</span> :
+                                    <span className='bg-primary text-primary m-2'> two</span>}
                             </Button>
                         </div>
                     </Nav>

@@ -3,13 +3,16 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { GoogleAuthProvider } from 'firebase/auth';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const [error, setError] = useState('');
     const { signIn, setLoading } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const from = '/courses';
 
     const { providerLogin } = useContext(AuthContext);
 
@@ -33,9 +36,12 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                console.log('....', user);
                 form.reset();
                 setError('');
+                if (user.uid) {
+                    navigate(from, { replace: true });
+                }
             })
             .catch(error => {
                 console.error(error)
@@ -43,6 +49,9 @@ const Login = () => {
             })
             .finally(() => {
                 setLoading(false);
+                toast.success('succesfully logged in')
+
+                // console.log(user);
             })
     }
 
