@@ -1,19 +1,19 @@
-.checkout-page{
+.terms-page{
     background-image: radial-gradient(#27aefdc4, #bce5f9);
-    margin: 0%;
-    padding: 2%;
+    margin: 0;
+    padding: 5%;
     height: 600px;
 }
-.checkout-container{
+.terms-container{
     background-color: white;
-    margin: 3% 25%;
+    margin: 5% 5%;
     padding: 5%;
-    height: 100%;
+    height: 80%;
 }
 
 /* tablet and mobile responsive */
 @media screen and (max-width:900px) {
-    .checkout-container{
+    .blogs-container{
         margin: 3% 10%;
     }
 }

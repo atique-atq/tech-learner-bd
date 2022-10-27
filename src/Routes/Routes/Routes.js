@@ -9,6 +9,7 @@ import Register from "../../Pages/Login/Register/Register";
 import Nopagefound from "../../Pages/Shared/Nopagefound/Nopagefound.js";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Checkout from "../../Pages/Checkout/Checkout";
+import TermsAndConditions from "../../Pages/Others/TermsAndContions/TermsAndConditions";
 
 export const routes = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/terms',
+                element: <TermsAndConditions></TermsAndConditions>
             },
             {
                 path: '*',
